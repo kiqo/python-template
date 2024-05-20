@@ -1,4 +1,9 @@
 from loguru import logger
 
-if __name__ == "__main__":
+
+def main():
     logger.debug("Hello world!")
+
+
+if __name__ == "__main__":
+    main()
