@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "TODO-my-project"
+version = "2024.0.0"
+dependencies = [
+  "loguru~=0.7"
+]
+requires-python = ">=3.12"
+authors = [
+  {name = "Hatchi Kiqo", email = "hatchikiqo@gmail.com"},
+]
+maintainers = [
+  {name = "Hatchi Kiqo", email = "hatchikiqo@gmail.com"},
+]
+description = "TODO Some great example project"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {text = "MIT License"}
+keywords = ["TODO", "python"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+]
+
+[tool.hatch.envs.test]
+dependencies = [
+  "TODO-my-project[dev]"
+]
+[tool.hatch.envs.test.scripts]
+run-coverage = "pytest --cov-config=pyproject.toml --cov=pkg --cov=tests"
+run = "run-coverage --no-cov"
+
+[project.urls]
+# TODO: Update the following section
+# Homepage = "https://example.com"
+# Documentation = "https://readthedocs.org"
+# Repository = "https://github.com/me/spam.git"
+# "Bug Tracker" = "https://github.com/me/spam/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[project.scripts]
+spam-cli = "spam:main_cli"
+
+[project.gui-scripts]
+spam-gui = "spam:main_gui"
+
+[project.entry-points."spam.magical"]
+tomatoes = "spam:main_tomatoes"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/TODO-my-package"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["src/TODO-my-package"]
