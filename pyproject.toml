@@ -4,7 +4,6 @@ build-backend = "hatchling.build"
 
 [project]
 name = "TODO-my-project"
-version = "2024.0.0"
 dependencies = [
   "loguru~=0.7"
 ]
@@ -23,19 +22,12 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python"
 ]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
   "pytest",
 ]
-
-[tool.hatch.envs.test]
-dependencies = [
-  "TODO-my-project[dev]"
-]
-[tool.hatch.envs.test.scripts]
-run-coverage = "pytest --cov-config=pyproject.toml --cov=pkg --cov=tests"
-run = "run-coverage --no-cov"
 
 [project.urls]
 # TODO: Update the following section
@@ -46,16 +38,27 @@ run = "run-coverage --no-cov"
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 
 [project.scripts]
-spam-cli = "spam:main_cli"
+main-cli = "TODO-my-package:main"
 
 [project.gui-scripts]
-spam-gui = "spam:main_gui"
+main-gui = "TODO-my-package:main"
 
 [project.entry-points."spam.magical"]
 tomatoes = "spam:main_tomatoes"
+
+[tool.hatch.version]
+path = "src/TODO-my-package/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/TODO-my-package"]
 
 [tool.hatch.build.targets.sdist]
 packages = ["src/TODO-my-package"]
+
+[tool.hatch.envs.test]
+dependencies = [
+  "TODO-my-project[dev]"
+]
+[tool.hatch.envs.test.scripts]
+run-coverage = "pytest --cov-config=pyproject.toml --cov=pkg --cov=tests"
+run = "run-coverage --no-cov"
