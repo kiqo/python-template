@@ -18,6 +18,8 @@ python --version
 pipx install pre-commit
 # Setup pre-commit for this repository
 pre-commit install
+# Install hatch
+pipx install hatch
 # Create a virtual environment using hatch-pip-compile which is configured to create uv-locked requirements-files and then install these dependencies
 hatch [-e default] shell
 ```
