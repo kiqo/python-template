@@ -1,4 +1,4 @@
-# TODO-my-package-Project
+# TODO-my-package Project
 
 First, choose a package name, e.g. `mypack` and then update the package name via `find . -type f -exec sed -i 's/TODO-my-package/mypack/g' {} \;` and rename `src/TODO-my-package` to `src/mypack`.
 Afterwards, find all remaining `TODO` and update the sections via `grep -r TODO .` .
@@ -53,17 +53,18 @@ hatch run main-cli
 
 Update the dependency in `pyproject.toml` and then run:
 ```bash
+# Locks dependencies with uv by hatch-pip-compile, if this does not update the shell then see section below
 hatch shell
-# Lock dependencies with uv
-uv pip compile pyproject.toml -o requirements.txt 
-uv pip sync requirements.txt
+# This is run in the background by hatch-pip-compile:
+# uv pip compile pyproject.toml -o requirements.txt 
+# uv pip sync requirements.txt
 ```
 
 
 ## Update pyproject.toml
-Note that updating the cli-scripts / entry points currently requires that hatch-environment needs to recreated (see [this](https://github.com/pypa/hatch/issues/771) issue):
+Note that updating the cli-scripts / entry points currently requires that the hatch-environment needs to recreated (see [this](https://github.com/pypa/hatch/issues/771) issue):
 ```bash
-hash env prune
+hatch env prune
 hatch shell
 ```
 Alternatively, you can use `pip install -e . --no-deps` to reinstall in editable mode after a change. 

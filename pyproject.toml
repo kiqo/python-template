@@ -72,8 +72,8 @@ pip-compile-hashes = true
 pip-compile-verbose = true
 
 [tool.hatch.envs.test]
-dependencies = [
-  "TODO-my-package[dev]"
+features = [
+  "dev"
 ]
 [tool.hatch.envs.test.scripts]
 run-coverage = "pytest --cov-config=pyproject.toml --cov=pkg --cov=tests"
